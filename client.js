@@ -15,6 +15,13 @@ const connect = () => {
     conn.write("NAME: JHK");
   });
 
+  // setTimeout and setInterval experiments on connect
+  // conn.on("connect", () => {
+  //   setTimeout(() => conn.write("Move: up"), 50);
+  //   setTimeout(() => conn.write("Move: left"), 100);
+  //   setInterval(() => conn.write("Move: up"), 50);
+  // });
+
   conn.on("data", data => {
     console.log(`Server: ${data}`);
   });

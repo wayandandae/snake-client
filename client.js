@@ -15,6 +15,10 @@ const connect = () => {
     conn.write("NAME: JHK");
   });
 
+  conn.on("connect", () => {
+    conn.write("Say: Am I Live?");
+  });
+
   // setTimeout and setInterval experiments on connect
   // conn.on("connect", () => {
   //   setTimeout(() => conn.write("Move: up"), 50);

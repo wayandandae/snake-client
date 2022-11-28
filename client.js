@@ -1,22 +1,25 @@
 const net = require("net");
+const { IP, PORT, NAME, CHAT } = require("./constants");
 
 // establishes a connection with the game server
 const connect = () => {
   const conn = net.createConnection({
-    host: "172.25.223.217", // IP address here,
-    port: "50541" // PORT number here,
+    host: IP, // IP address here,
+    port: PORT // PORT number here,
   });
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
 
+  // display initial connection success message and send name to server
   conn.on("connect", () => {
     console.log("Successfully connected to game server");
-    conn.write("NAME: JHK");
+    conn.write(`NAME: ${NAME}`);
   });
 
+  // send chat content to server
   conn.on("connect", () => {
-    conn.write("Say: Am I Live?");
+    conn.write(`Say: ${CHAT}`);
   });
 
   // setTimeout and setInterval experiments on connect

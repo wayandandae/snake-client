@@ -1,3 +1,4 @@
+const { keyMap } = require('./constants');
 // Stores the active TCP connection object.
 let connection;
 
@@ -9,18 +10,7 @@ const handleUserInput = (key) => {
   }
   // change every keystroke to lowercase for concise if-clauses
   const lowKey = key.toLowerCase();
-  if (lowKey === 'w') {
-    connection.write("Move: up");
-  }
-  if (lowKey === 'a') {
-    connection.write("Move: left");
-  }
-  if (lowKey === 's') {
-    connection.write("Move: down");
-  }
-  if (lowKey === 'd') {
-    connection.write("Move: right");
-  }
+  connection.write(keyMap[lowKey]);
 };
 
 // setup interface to handle user input from stdin
